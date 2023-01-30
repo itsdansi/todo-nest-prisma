@@ -55,8 +55,9 @@ export class TodoService {
    */
   async updateTodo(id: number, updatePayload: Todo): Promise<Todo> {
     try {
+      var id = Number(id);
       const todo = await this.prisma.todo.findUnique({
-        where: { id: Number(id) },
+        where: { id },
       });
       if (!todo)
         throw new HttpException(
