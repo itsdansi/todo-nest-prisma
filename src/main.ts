@@ -8,7 +8,10 @@ async function bootstrap() {
     .setTitle('TODO App')
     .setDescription('A simple TODO app built using NestJs.')
     .setVersion('1.0')
-    // .addTag('cats')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'access-token',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
